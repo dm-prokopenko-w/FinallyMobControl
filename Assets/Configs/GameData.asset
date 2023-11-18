@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509746750e68b82418d197f6458587fc, type: 3}
+  m_Name: GameData
+  m_EditorClassIdentifier: 
+  Id: GameData
+  PlayerParm:
+    Speed: 0.1
+    BasePower: 1
+  Mobs:
+  - {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
+  Champs:
+  - {fileID: 11400000, guid: 81a4cd913a811704a920fdb25415f681, type: 2}
+  Lvls:
+  - BasePower: 10

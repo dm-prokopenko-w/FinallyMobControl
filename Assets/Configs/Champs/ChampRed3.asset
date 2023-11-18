@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2059dc44c2f8e94a8eaa0d0d24b7998, type: 3}
+  m_Name: ChampRed3
+  m_EditorClassIdentifier: 
+  Id: ChampRed3
+  Prefab: {fileID: 4258689541969821181, guid: 27d08d8545ea41b4c8b6c653d11b7a70, type: 3}
+  Powers: 370000003c00000041000000460000004b000000

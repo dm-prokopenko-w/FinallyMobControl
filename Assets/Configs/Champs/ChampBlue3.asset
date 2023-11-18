@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2059dc44c2f8e94a8eaa0d0d24b7998, type: 3}
+  m_Name: ChampBlue3
+  m_EditorClassIdentifier: 
+  Id: ChampBlue3
+  Prefab: {fileID: 4759320032311548692, guid: ed002031bc459814b84d07b5d18c61a0, type: 3}
+  Powers: 370000003c00000041000000460000004b000000
