@@ -4,7 +4,7 @@ using GameplaySystem.Units;
 
 namespace Core
 {
-    public class ObjectPool
+    public class UnitObjectPool
 	{
 		private Dictionary<string, Pool> _pools = new Dictionary<string, Pool>();
 
@@ -63,29 +63,28 @@ namespace Core
 
             public Unit Spawn(Vector3 pos, Quaternion rot, Transform container)
             {
-				Unit obj;
+				Unit unit;
                 if (_inactive.Count == 0)
                 {
-                    obj = Object.Instantiate(_prefab, pos, rot, container);
-                    obj.name = _prefab.name;
+                    unit = Object.Instantiate(_prefab, pos, rot, container);
+                    unit.name = _prefab.name;
                 }
                 else
                 {
-                    obj = _inactive[_inactive.Count - 1];
+                    unit = _inactive[_inactive.Count - 1];
                     _inactive.RemoveAt(_inactive.Count - 1);
                 }
 
-                obj.transform.position = pos;
-                obj.transform.rotation = rot;
-                obj.gameObject.SetActive(true);
-                return obj;
+                unit.SetStartPos(unit.transform.position, unit.transform.rotation);
+                unit.Active(true);
+                return unit;
             }
 
-            public void Despawn(Unit obj)
+            public void Despawn(Unit unit)
             {
-                obj.gameObject.SetActive(false);
-                obj.transform.SetParent(_container);
-                _inactive.Add(obj);
+                unit.Active(false);
+                unit.transform.SetParent(_container);
+                _inactive.Add(unit);
             }
         }
     }

@@ -31,10 +31,13 @@ namespace GameplaySystem.Player
 		{
 			if (eventData.delta.x > 0)
 			{
+				if (transform.position.x > 1.2f) return;
 				_direction = new Vector3(_speedMove, 0, 0);
 			}
 			else if (eventData.delta.x < 0)
 			{
+				if (transform.position.x < -1.2f) return;
+
 				_direction = new Vector3(-_speedMove, 0, 0);
 			}
 

@@ -7,39 +7,57 @@ namespace Core
 	{
 		[Inject] private SaveModule _saveModule;
 
-		private Progress _save;
-
-		public void Start()
+		public Progress Save
 		{
-
-			_save = _saveModule.Load<Progress>(Constants.ProgressKey);
-			CheckInit();
-		}
-
-		private void CheckInit()
-		{
-			if (_save == null)
+			get
 			{
+				if (_save == null)
+				{
+					_save = _saveModule.Load<Progress>(Constants.ProgressKey);
+					if (_save != null)
+					{
+						return _save;
+					}
+				}
+
 				_save = new Progress()
 				{
-					Lvl = 1,
-					NumMod =0,
+					LoadLvl = 1,
+					ProgressLvl = 1,
+					NumMod = 0,
 					NumModPower = 0,
 					NumChamp = 0,
 					NumChampPower = 0
 				};
+
+				return _save;
 			}
+
+			set { _save = value; }
 		}
-		public Progress GetSave()
+
+		private Progress _save;
+
+		public void Start()
 		{
-			CheckInit();
-			return _save;
+			Save = _saveModule.Load<Progress>(Constants.ProgressKey);
+		}
+
+		public void WinLvl(int num)
+		{
+			Save.LoadLvl = num;
+
+			if (num > Save.ProgressLvl)
+			{
+				Save.ProgressLvl = num;
+			}
 		}
 	}
 
 	public class Progress
 	{
-		public int Lvl;
+		public int LoadLvl;
+		public int ProgressLvl;
 		public int NumMod;
 		public int NumModPower;
 		public int NumChamp;

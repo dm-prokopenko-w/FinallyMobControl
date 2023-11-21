@@ -5,11 +5,12 @@ using VContainer.Unity;
 
 namespace GameplaySystem.Player
 {
-  	public class PlayerParmView : MonoBehaviour, IStartable
+	public class PlayerParmView : MonoBehaviour, IStartable
 	{
 		[Inject] private PlayerController _playerContr;
 
 		[SerializeField] private Image _bar;
+		[SerializeField] private GameObject _maxObj;
 
 		public void Start()
 		{
@@ -24,6 +25,7 @@ namespace GameplaySystem.Player
 		private void OnStep(float value)
 		{
 			_bar.fillAmount = value;
+			_maxObj.SetActive(value >= 1);
 		}
 	}
 }

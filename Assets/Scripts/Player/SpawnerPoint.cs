@@ -3,12 +3,12 @@ using UnityEngine;
 using VContainer;
 using Core;
 using GameplaySystem.Enemy;
-using VContainer.Unity;
 using GameplaySystem.Units;
+using VContainer.Unity;
 
 namespace GameplaySystem
 {
-	public class SpawnerPoint : MonoBehaviour
+	public class SpawnerPoint : MonoBehaviour, IStartable
 	{
 		[Inject] private PlayerController _playerContr;
 		[Inject] private EnemyController _enemyContr;
@@ -16,7 +16,7 @@ namespace GameplaySystem
 
 		[SerializeField] private Team _team;
 
-		private void Start()
+		public void Start()
 		{
 			if (_team == Team.Player)
 			{
@@ -25,8 +25,8 @@ namespace GameplaySystem
 			}
 			else if(_team == Team.Enemy)
 			{
-				_playerContr.TargetPoint = transform.position;
 				_enemyContr.StartPoint = transform;
+				_playerContr.TargetPoint = transform.position;
 			}
 			else
 			{

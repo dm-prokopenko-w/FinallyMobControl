@@ -2,8 +2,16 @@ namespace Core
 {
 	public enum Team
 	{
-		None,
+		All,
 		Player,
 		Enemy
+	}
+
+	public enum Views
+	{
+		None,
+		Merge,
+		Battle,
+		LvlProgress
 	}
 }

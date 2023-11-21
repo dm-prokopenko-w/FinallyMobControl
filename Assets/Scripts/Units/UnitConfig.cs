@@ -9,5 +9,6 @@ namespace GameplaySystem.Units
 	{
 		public Unit Prefab;
 		public List<int> Powers;
+		public Sprite Icon;
 	}
 }

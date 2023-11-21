@@ -10,9 +10,10 @@ namespace GameplaySystem.Player
 {
 	public class PlayerController : IStartable, IDisposable
 	{
+		[Inject] private GameplayController _gameplay;
+
 		[Inject] private ControlModule _control;
 		[Inject] private ProgressController _progrss;
-		[Inject] private AssetLoader _assetLoader;
 		[Inject] private UnitController _unitContr;
 
 		public Transform StartPoint { get; set; }
@@ -32,21 +33,26 @@ namespace GameplaySystem.Player
 		private float _mobPower;
 		private float _champPower;
 
-		public async void Start()
+		private bool _isStopGame = false;
+
+		public void Start()
 		{
 			_control.TouchStart += OnStart;
 			_control.TouchMoved += OnDrag;
 			_control.TouchEnd += OnEnd;
 
-			var progress = _progrss.GetSave();
+			_gameplay.OnInit += Init;
+			_gameplay.OnEndGame += StopGame;
+		}
 
-			GameData data = await _assetLoader.LoadConfig(Constants.GameData) as GameData;
+		private void Init(GameData data)
+		{
+			var progress = _progrss.Save;
+			_mobPrefab = data.PlayerParm.Mobs[progress.NumMod].Prefab as Mob;
+			_champPrefab = data.PlayerParm.Champs[progress.NumChamp].Prefab as Champ;
 
-			_mobPrefab = data.Mobs[progress.NumMod].Prefab as Mob;
-			_champPrefab = data.Champs[progress.NumChamp].Prefab as Champ;
-
-			_mobPower = data.Mobs[progress.NumMod].Powers[progress.NumModPower];
-			_champPower = data.Mobs[progress.NumMod].Powers[progress.NumChampPower];
+			_mobPower = data.PlayerParm.Mobs[progress.NumMod].Powers[progress.NumModPower];
+			_champPower = data.PlayerParm.Mobs[progress.NumMod].Powers[progress.NumChampPower];
 		}
 
 		public void Dispose()
@@ -54,35 +60,53 @@ namespace GameplaySystem.Player
 			_control.TouchStart -= OnStart;
 			_control.TouchMoved -= OnDrag;
 			_control.TouchEnd -= OnEnd;
+
+			_gameplay.OnInit -= Init;
+			_gameplay.OnEndGame -= StopGame;
 		}
 
 		public void OnStart(PointerEventData eventData)
 		{
+			if (_isStopGame) return;
+
 			_currentTime = 0;
 			Step();
-			_unitContr.Spawn(_mobPrefab, StartPoint.position, StartPoint.rotation, TargetPoint, _mobPower);
+			Spawn(_mobPrefab, StartPoint.transform.position, _mobPower);
 		}
 
 		public void OnDrag(PointerEventData eventData)
 		{
+			if (_isStopGame) return;
+
 			_currentTime += Time.deltaTime;
 
 			if (_currentTime > _timeAwait)
 			{
 				_currentTime = 0;
 				Step();
-				_unitContr.Spawn(_mobPrefab, StartPoint.position, StartPoint.rotation, TargetPoint, _mobPower);
+				Spawn(_mobPrefab, StartPoint.transform.position, _mobPower);
 			}
 		}
 
 		public void OnEnd(PointerEventData eventData)
 		{
+			if (_isStopGame) return;
+
 			if (_curStep >= _maxStep)
 			{
+				Step();
 				_curStep = 0;
-				_unitContr.Spawn(_champPrefab, StartPoint.position, StartPoint.rotation, TargetPoint, _champPower);
+				Spawn(_champPrefab, StartPoint.transform.position, _champPower);
 			}
 		}
+
+		public void Spawn(Unit unit, Vector3 startPos, float power)
+		{
+			if (unit == null) return;
+
+			_unitContr.Spawn(unit, startPos, Quaternion.identity, TargetPoint, power);
+		}
+		private void StopGame(bool value) => _isStopGame = true;
 
 		private void Step()
 		{
