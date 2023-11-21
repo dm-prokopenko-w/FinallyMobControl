@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2059dc44c2f8e94a8eaa0d0d24b7998, type: 3}
-  m_Name: ChampRed1
+  m_Name: ChampBlue9
   m_EditorClassIdentifier: 
-  Id: ChampRed1
-  Prefab: {fileID: 3199700382804575854, guid: 533da81a0ee6c5e44a81d4ab9d261f54, type: 3}
-  Powers: 050000000a0000000f0000001400000019000000
-  Icon: {fileID: 21300000, guid: dd4bfc0a99b83834181efc148c1367cd, type: 3}
+  Id: ChampBlue9
+  Prefab: {fileID: 8326074102439841516, guid: 42f0c8f1f53a5dc4aa1dc852fb61b9e3, type: 3}
+  Power: 2
+  Icon: {fileID: 21300000, guid: 4e3d3f840021ae849bc2a84f3562b057, type: 3}

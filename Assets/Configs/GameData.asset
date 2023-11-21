@@ -16,8 +16,26 @@ MonoBehaviour:
   PlayerParm:
     Mobs:
     - {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
+    - {fileID: 11400000, guid: a22b223b45b62a44ca04ea5b82ad9611, type: 2}
+    - {fileID: 11400000, guid: c25f10f8fcab5d844af306e6045d40c1, type: 2}
+    - {fileID: 11400000, guid: c678022d3e8df934c907e46304c89609, type: 2}
+    - {fileID: 11400000, guid: a3aab29947d102f45b9c63b452bd91bc, type: 2}
+    - {fileID: 11400000, guid: 330a76bef0d8ad8489b55ce0d42432d6, type: 2}
+    - {fileID: 11400000, guid: 53dde82d81a0025488228817858fdb6f, type: 2}
+    - {fileID: 11400000, guid: 933a0532f345b984c9496ff7af8cfbf8, type: 2}
+    - {fileID: 11400000, guid: 94d3fa85815044b41864a3710692d8c2, type: 2}
+    - {fileID: 11400000, guid: 21c4a0401f2e9af4ba08c295a4cc53fb, type: 2}
     Champs:
     - {fileID: 11400000, guid: 81a4cd913a811704a920fdb25415f681, type: 2}
+    - {fileID: 11400000, guid: 9d14204b14d78fa45a91e8b138e3401a, type: 2}
+    - {fileID: 11400000, guid: a4fd5685d0e4cc44381931304e6dd54a, type: 2}
+    - {fileID: 11400000, guid: 1538ad4f14db729449cb818436820c98, type: 2}
+    - {fileID: 11400000, guid: 2fd7b4de6aa5d2b408fc39826c1c6e6b, type: 2}
+    - {fileID: 11400000, guid: c0fdd17e24a83544c8b9e41b63d432f4, type: 2}
+    - {fileID: 11400000, guid: ea7c1517c8c38e347838fd4ad087ec73, type: 2}
+    - {fileID: 11400000, guid: bc0c324f8ba33d94092660ed9bfdfc0c, type: 2}
+    - {fileID: 11400000, guid: 16706ccecc879f04683808ec8b0233fc, type: 2}
+    - {fileID: 11400000, guid: e917953ceb32df445ba54ba01a9ebb98, type: 2}
     Speed: 0.1
     BasePower: 1
   Lvls:
@@ -30,13 +48,11 @@ MonoBehaviour:
     MobEnemis:
     - Item: {fileID: 11400000, guid: a9d55926d8fd3f74482c9473c8afd65e, type: 2}
       TimeAwait: 1
-      PowerItem: 1
     ChampEnemis:
     - Item: {fileID: 11400000, guid: 8d4a3a2513165054a8dbda9f73fe47b9, type: 2}
       TimeAwait: 15
-      PowerItem: 3
   - EnemyBasePower: 250
-    LvlEnv: {fileID: 6011540859444011943, guid: 2d34bf5d04044af4ba85d5495706062d,
+    LvlEnv: {fileID: 6011540859444011943, guid: 5ad7954bd9be4374a87ffcb07dd5df64,
       type: 3}
     Rewards:
     - Item: {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
@@ -44,15 +60,13 @@ MonoBehaviour:
     - Item: {fileID: 11400000, guid: 8d4a3a2513165054a8dbda9f73fe47b9, type: 2}
       Count: 1
     MobEnemis:
-    - Item: {fileID: 11400000, guid: a9d55926d8fd3f74482c9473c8afd65e, type: 2}
+    - Item: {fileID: 11400000, guid: 5424a432cf736ff408fe5d1d89fa3b73, type: 2}
       TimeAwait: 1
-      PowerItem: 1
     ChampEnemis:
-    - Item: {fileID: 11400000, guid: 8d4a3a2513165054a8dbda9f73fe47b9, type: 2}
+    - Item: {fileID: 11400000, guid: 8102d6a744645ed4a82323cbcd29e820, type: 2}
       TimeAwait: 10
-      PowerItem: 3
   - EnemyBasePower: 350
-    LvlEnv: {fileID: 6011540859444011943, guid: 4e18b3112c2ce7d498c88a85100b0ab4,
+    LvlEnv: {fileID: 6011540859444011943, guid: 6c83df42386d14f408acba9457dbf407,
       type: 3}
     Rewards:
     - Item: {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
@@ -60,15 +74,13 @@ MonoBehaviour:
     - Item: {fileID: 11400000, guid: 81a4cd913a811704a920fdb25415f681, type: 2}
       Count: 1
     MobEnemis:
-    - Item: {fileID: 11400000, guid: a9d55926d8fd3f74482c9473c8afd65e, type: 2}
+    - Item: {fileID: 11400000, guid: 0e116d12b84602e4a8635c3566084529, type: 2}
       TimeAwait: 1
-      PowerItem: 1
     ChampEnemis:
-    - Item: {fileID: 11400000, guid: 8d4a3a2513165054a8dbda9f73fe47b9, type: 2}
+    - Item: {fileID: 11400000, guid: a22831a916e74c04a9a8ec5dec823058, type: 2}
       TimeAwait: 5
-      PowerItem: 3
   - EnemyBasePower: 450
-    LvlEnv: {fileID: 6011540859444011943, guid: ae8b875a186b65e4ebba76d5724e55e0,
+    LvlEnv: {fileID: 6011540859444011943, guid: 1b5b224d081bc7146867dd1fec37ec95,
       type: 3}
     Rewards:
     - Item: {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
@@ -76,15 +88,13 @@ MonoBehaviour:
     - Item: {fileID: 11400000, guid: 81a4cd913a811704a920fdb25415f681, type: 2}
       Count: 2
     MobEnemis:
-    - Item: {fileID: 11400000, guid: a9d55926d8fd3f74482c9473c8afd65e, type: 2}
+    - Item: {fileID: 11400000, guid: 8ff192521c6187e44abe8bc7655c43a6, type: 2}
       TimeAwait: 1
-      PowerItem: 1
     ChampEnemis:
-    - Item: {fileID: 11400000, guid: 8d4a3a2513165054a8dbda9f73fe47b9, type: 2}
+    - Item: {fileID: 11400000, guid: 864b86013f0c2344880849dd538dce07, type: 2}
       TimeAwait: 15
-      PowerItem: 4
   - EnemyBasePower: 600
-    LvlEnv: {fileID: 6011540859444011943, guid: 7fdf50032e25c094c95214e6269d9ca7,
+    LvlEnv: {fileID: 6011540859444011943, guid: ac060447b7a859f4eab9ba3011d05118,
       type: 3}
     Rewards:
     - Item: {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
@@ -92,12 +102,14 @@ MonoBehaviour:
     - Item: {fileID: 11400000, guid: 81a4cd913a811704a920fdb25415f681, type: 2}
       Count: 3
     MobEnemis:
-    - Item: {fileID: 11400000, guid: a9d55926d8fd3f74482c9473c8afd65e, type: 2}
-      TimeAwait: 1
-      PowerItem: 1
+    - Item: {fileID: 11400000, guid: 0265b30ab5a30534b85498dfb3accbe1, type: 2}
+      TimeAwait: 2
+    - Item: {fileID: 11400000, guid: 5424a432cf736ff408fe5d1d89fa3b73, type: 2}
+      TimeAwait: 3
     ChampEnemis:
-    - Item: {fileID: 11400000, guid: 8d4a3a2513165054a8dbda9f73fe47b9, type: 2}
+    - Item: {fileID: 11400000, guid: 944425cd95997544c94aa460afbbac09, type: 2}
+      TimeAwait: 20
+    - Item: {fileID: 11400000, guid: 00e3c23ee1df2964fbfc5851bd59e9f7, type: 2}
       TimeAwait: 10
-      PowerItem: 5
   DropPrefab: {fileID: 8286696265415824311, guid: f33a4b5ba855a0444bcd320f35539272,
     type: 3}

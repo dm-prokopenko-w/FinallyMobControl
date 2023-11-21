@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2059dc44c2f8e94a8eaa0d0d24b7998, type: 3}
+  m_Name: MobRed7
+  m_EditorClassIdentifier: 
+  Id: MobRed7
+  Prefab: {fileID: 3847044363864552857, guid: db1252997fa725c48ac1152858357bd1, type: 3}
+  Power: 1
+  Icon: {fileID: 21300000, guid: 4c46bc4150cdc1e44a26ae597be49bc1, type: 3}

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2059dc44c2f8e94a8eaa0d0d24b7998, type: 3}
-  m_Name: MobBlue1
+  m_Name: ChampRed7
   m_EditorClassIdentifier: 
-  Id: MobBlue1
-  Prefab: {fileID: 9176973518554069044, guid: b6c4df5150e22b54aa849c0d3b5ab574, type: 3}
-  Powers: 0100000002000000030000000400000005000000060000000700000008000000090000000a000000
-  Icon: {fileID: 21300000, guid: 5d0fab5349c050d469644d9cad174cae, type: 3}
+  Id: ChampRed7
+  Prefab: {fileID: 3199700382804575854, guid: 533da81a0ee6c5e44a81d4ab9d261f54, type: 3}
+  Power: 2
+  Icon: {fileID: 21300000, guid: dd4bfc0a99b83834181efc148c1367cd, type: 3}
