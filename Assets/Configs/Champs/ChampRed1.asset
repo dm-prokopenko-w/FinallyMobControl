@@ -15,3 +15,4 @@ MonoBehaviour:
   Id: ChampRed1
   Prefab: {fileID: 3199700382804575854, guid: 533da81a0ee6c5e44a81d4ab9d261f54, type: 3}
   Powers: 050000000a0000000f0000001400000019000000
+  Icon: {fileID: 21300000, guid: dd4bfc0a99b83834181efc148c1367cd, type: 3}
