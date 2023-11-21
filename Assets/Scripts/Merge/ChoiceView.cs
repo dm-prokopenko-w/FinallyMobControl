@@ -1,3 +1,4 @@
+using Merge;
 using System;
 using TMPro;
 using UnityEngine;
@@ -6,21 +7,23 @@ using UnityEngine.UI;
 
 namespace UI
 {
-	public class ChoiceView : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
+	public class ChoiceView : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler, IDropHandler
 	{
 		[SerializeField] private Image _icon;
 		[SerializeField] private TMP_Text _counter;
+		[SerializeField] private DragDropItem _item;
 
 		public Action OnStartDrag;
 		public Action<Vector2> OnDragItem;
 		public Action OnEndDragItem;
+		public Action<ChoiceView> OnDropItem;
 
-		public void Init(Sprite icon, Action onStartDrag, Action<Vector2> onDragItem, Action onEndDragItem)
+		public void Init(Action onStartDrag, Action<Vector2> onDragItem, Action onEndDragItem, Action<ChoiceView> onDropItem)
 		{
-			_icon.sprite = icon;
 			OnStartDrag += onStartDrag;
 			OnDragItem += onDragItem;
 			OnEndDragItem += onEndDragItem;
+			OnDropItem += onDropItem;
 		}
 
 		public void OnPointerDown(PointerEventData eventData)
@@ -38,6 +41,15 @@ namespace UI
 			OnEndDragItem?.Invoke();
 		}
 
-		public void SetCounter(int count) => _counter.text = count.ToString();
+		public void OnDrop(PointerEventData eventData)
+		{
+			OnDropItem?.Invoke(this);
+		}
+
+		public void SetValue(int count, Sprite icon)
+		{
+			_counter.text = count.ToString();
+			_icon.sprite = icon;
+		}
 	}
 }

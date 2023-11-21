@@ -9,7 +9,6 @@ namespace Merge
 		[SerializeField] private DragDropItem _item;
 
 		public Action<Slot> OnDropItem;
-		public Action<Slot> OnDropItem2;
 
 		public void OnDrop(PointerEventData eventData)
 		{

@@ -8,7 +8,7 @@ namespace GameplaySystem.Units
 	public class UnitConfig : Config
 	{
 		public Unit Prefab;
-		public List<int> Powers;
+		public int Power;
 		public Sprite Icon;
 	}
 }

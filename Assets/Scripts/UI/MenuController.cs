@@ -12,11 +12,11 @@ namespace UI
 	{
 		[Inject] private AssetLoader _assetLoader;
 
-		public Action<MenuItem> OnInitMenuItem;
+		public Action<ItemMenu> OnInitMenuItem;
 		public Action<GameData> OnInit;
 		public Action<Transform, Transform> OnInitParent;
 
-		private MenuItem _activeView;
+		private ItemMenu _activeView;
 
 		public void Start()
 		{
@@ -40,7 +40,7 @@ namespace UI
 					var view = Object.Instantiate(viewItem.View, viewsParent);
 					view.name = viewItem.ViewType.ToString();
 
-					MenuItem item = new MenuItem()
+					ItemMenu item = new ItemMenu()
 					{
 						Type = viewItem.ViewType,
 						Btn = btn,
@@ -62,7 +62,7 @@ namespace UI
 			OnInit?.Invoke(gameData);
 		}
 
-		private void OnClick(MenuItem item)
+		private void OnClick(ItemMenu item)
 		{
 			_activeView.Active(false);
 			_activeView = item;
@@ -75,7 +75,7 @@ namespace UI
 		}
 	}
 
-	public class MenuItem
+	public class ItemMenu
 	{
 		public Views Type;
 		public BtnMenuView Btn;

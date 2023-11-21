@@ -1,3 +1,4 @@
+using Core;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ namespace GameplaySystem
 	public class EndGamePanel : MonoBehaviour, IStartable
 	{
 		[Inject] private GameplayController _gameplay;
+		[Inject] private ProgressController _progress;
 
 		[SerializeField] private GameObject _winPanel;
 		[SerializeField] private GameObject _losePanel;
@@ -22,6 +24,7 @@ namespace GameplaySystem
 			_losePanel.SetActive(false);
 
 			_gameplay.OnEndGame += ShowPanel;
+			_gameplay.OnInit += InitData;
 
 			_exitBtn.onClick.AddListener(Exit);
 			_exitBtn.gameObject.SetActive(false);
@@ -29,6 +32,7 @@ namespace GameplaySystem
 
 		private void OnDestroy()
 		{
+			_gameplay.OnInit -= InitData;
 			_gameplay.OnEndGame -= ShowPanel;
 		}
 
@@ -53,13 +57,15 @@ namespace GameplaySystem
 			_exitBtn.gameObject.SetActive(true);
 		}
 
-		[Inject] private MenuController _menuContr;
-
-		private LvlProgressView _lvlProgress;
-
 		private void InitData(GameData data)
 		{
-			_lvlProgress.Init(data.Lvls);
+			var loadLvl = _progress.Save.LoadLvl - 1;
+
+			foreach (var item in data.Lvls[loadLvl].Rewards)
+			{
+				var obj = Instantiate(_rewardView, _rewardParent);
+				obj.Init(item.Item.Icon, item.Count);
+			}
 		}
 
 	}

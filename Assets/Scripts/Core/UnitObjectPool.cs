@@ -75,7 +75,7 @@ namespace Core
                     _inactive.RemoveAt(_inactive.Count - 1);
                 }
 
-                unit.SetStartPos(unit.transform.position, unit.transform.rotation);
+                unit.SetStartPos(pos, rot);
                 unit.Active(true);
                 return unit;
             }

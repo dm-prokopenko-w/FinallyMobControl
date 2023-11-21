@@ -13,11 +13,11 @@ namespace UI
 		[SerializeField] private Slot _slotPrefab;
 		[SerializeField] private Transform _slotParent;
 
-		public void InitChoiceView(Action onStart, Action<Vector2> onDrag, Action onEndDrag, Sprite icon)
+		public void InitChoiceView(Action onStart, Action<Vector2> onDrag, Action onEndDrag, Action<ChoiceView> onDrop, Sprite icon)
 		{
 			var view = Instantiate(_choiceView, _parentChoiceView);
 			view.name = _choiceView.name;
-			view.Init(icon, onStart, onDrag, onEndDrag);
+			view.Init(onStart, onDrag, onEndDrag, onDrop);
 		}
 
 		public void InitSlots(Action<Slot> onDropItem)

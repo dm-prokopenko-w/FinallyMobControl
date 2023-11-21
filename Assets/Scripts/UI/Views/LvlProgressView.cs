@@ -1,9 +1,7 @@
 using GameplaySystem;
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using VContainer;
-using VContainer.Unity;
 
 namespace UI
 {
@@ -12,13 +10,13 @@ namespace UI
 		[SerializeField] private LvlProgressBtn _btnPrefab;
 		[SerializeField] private Transform _btnsParent;
 
-		public void Init(List<LvlData> lvls)
+		public void Init(List<LvlData> lvls, Action<int> onLoadLvl)
 		{
 			int num = 1;
 			foreach (var lvl in lvls)
 			{
 				var btn = Instantiate(_btnPrefab, _btnsParent);
-				btn.Init(num, lvl.Rewards);
+				btn.Init(num, lvl.Rewards, onLoadLvl);
 				num++;	
 			}
 		}

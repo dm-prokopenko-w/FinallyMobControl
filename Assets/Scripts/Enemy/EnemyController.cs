@@ -41,7 +41,7 @@ namespace GameplaySystem.Enemy
 		{
 			var progress = _progrss.Save;
 
-			var lvlData = data.Lvls[progress.ProgressLvl - 1];
+			var lvlData = data.Lvls[progress.LoadLvl - 1];
 
 			foreach (var item in lvlData.MobEnemis)
 			{
@@ -50,7 +50,7 @@ namespace GameplaySystem.Enemy
 					UnitItem = item.Item.Prefab,
 					TimeAwait = item.TimeAwait,
 					OnSpawn = Spawn,
-					Dam = item.PowerItem
+					Dam = item.Item.Power
 				};
 
 				_items.Add(enemy);
@@ -63,7 +63,7 @@ namespace GameplaySystem.Enemy
 					UnitItem = item.Item.Prefab,
 					TimeAwait = item.TimeAwait,
 					OnSpawn = Spawn,
-					Dam = item.PowerItem
+					Dam = item.Item.Power
 				};
 
 				_items.Add(enemy);

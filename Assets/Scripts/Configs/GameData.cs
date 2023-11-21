@@ -46,6 +46,5 @@ namespace GameplaySystem
 	{
 		public UnitConfig Item;
 		public float TimeAwait = 1f;
-		public int PowerItem = 1;
 	}
 }

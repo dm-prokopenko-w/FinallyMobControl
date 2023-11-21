@@ -43,7 +43,7 @@ namespace GameplaySystem
 			if (_isEndGameValue)
 			{
 				int curLvl = _progress.Save.LoadLvl;
-				_progress.WinLvl(curLvl);
+				_progress.SaveLvl(curLvl);
 			}
 
 			SceneLoader.LoadMenuScene();

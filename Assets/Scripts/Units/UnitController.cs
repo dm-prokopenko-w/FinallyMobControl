@@ -38,7 +38,7 @@ namespace GameplaySystem.Units
 		{
 			var progress = _progrss.Save;
 			_playerBasePower = data.PlayerParm.BasePower;
-			_enemyBasePower = data.Lvls[progress.ProgressLvl - 1].EnemyBasePower;
+			_enemyBasePower = data.Lvls[progress.LoadLvl - 1].EnemyBasePower;
 			OnInit();
 		}
 
@@ -80,7 +80,7 @@ namespace GameplaySystem.Units
 				return;
 			}
 
-			if (enterCol == _playerBase.Col && thisUnit.tag == Constants.EnemyTag)
+			if (enterCol == _playerBase.Col && thisUnit != null && thisUnit.tag == Constants.EnemyTag)
 			{
 				var onLose = new Action(() =>
 				{
@@ -97,7 +97,7 @@ namespace GameplaySystem.Units
 			}
 
 			var enterBase = _enenyBases.Find(x => x.Col == enterCol);
-			if (enterBase != null && thisUnit.tag == Constants.PlayerTag)
+			if (enterBase != null && thisUnit != null && thisUnit.tag == Constants.PlayerTag)
 			{
 				var onWin = new Action(() =>
 				{

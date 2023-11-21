@@ -6,20 +6,17 @@ using UnityEditor;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
-using Object = UnityEngine.Object;
+using static UnityEditor.Progress;
 
 namespace Merge
 {
 	public class MergeController : IStartable, IDisposable
 	{
 		[Inject] private MenuController _menuContr;
-
-		[Inject] private AssetLoader _assetLoader;
 		[Inject] private ProgressController _progrss;
 
 		private DragDropItem _dropItem;
-		private Sprite _mobSprite;
-		private Sprite _champSprite;
+		private MergeView _merge;
 
 		public void Start()
 		{
@@ -29,41 +26,39 @@ namespace Merge
 
 		private void InitData(GameData data)
 		{
-			var progress = _progrss.GetSave();
-			_mobSprite = data.PlayerParm.Mobs[progress.NumMod].Icon;
-			_champSprite = data.PlayerParm.Mobs[progress.NumMod].Icon;
+			var progress = _progrss.Save;
+			var mobSprite = data.PlayerParm.Mobs[progress.NumMod].Icon;
+			var champSprite = data.PlayerParm.Mobs[progress.NumMod].Icon;
+
+			_merge.InitChoiceView(
+				() => StartDrag(mobSprite),
+				SetDragItem,
+				EndDrag,
+				(ChoiceView view) => SetValueChoiceView(view, champSprite),
+				mobSprite);
+
+			_merge.InitChoiceView(
+				() => StartDrag(champSprite),
+				SetDragItem,
+				EndDrag,
+				(ChoiceView view) => SetValueChoiceView(view, champSprite),
+				champSprite);
+
+			_merge.InitSlots(OnDropInSlot);
 		}
 
-		private async void Init(UI.MenuItem item)
+		private void Init(ItemMenu item)
 		{
 			if (item.Type != Views.Merge) return;
+			_merge = item.View as MergeView;
 
-			GameData data = await _assetLoader.LoadConfig(Constants.GameData) as GameData;
-			var progress = _progrss.GetSave();
-
-			_dropItem = Object.Instantiate(data.DropPrefab, item.View.transform);
-			_dropItem.Init(
-				() => StartDrag(data.PlayerParm.Mobs[progress.NumMod].Icon),
-				SetDragItem,
-				EndDrag);
-
-
-			MergeView merge = item.View as MergeView;
-
-			merge.InitChoiceView(
-				() => StartDrag(data.PlayerParm.Mobs[progress.NumMod].Icon),
-				SetDragItem,
-				EndDrag,
-				data.PlayerParm.Mobs[progress.NumMod].Icon);
-
-			merge.InitChoiceView(
-				() => StartDrag(data.PlayerParm.Champs[progress.NumChamp].Icon),
-				SetDragItem,
-				EndDrag,
-				data.PlayerParm.Champs[progress.NumChamp].Icon);
-
-			merge.InitSlots(OnDropInSlot);
-
+			/*
+		   _dropItem = Object.Instantiate(data.DropPrefab, item.View.transform);
+		   _dropItem.Init(
+			   () => StartDrag(data.PlayerParm.Mobs[progress.NumMod].Icon),
+			   SetDragItem,
+			   EndDrag);
+		   */
 		}
 
 		public void OnDropInSlot(Slot slot)
@@ -80,6 +75,11 @@ namespace Merge
 		{
 			_dropItem.SetBlocksRaycasts(false);
 			_dropItem.SetIcon(icon);
+		}
+
+		private void SetValueChoiceView(ChoiceView view, Sprite icon)
+		{
+			//view.SetValue(icon);
 		}
 
 		private void SetDragItem(Vector2 pos)

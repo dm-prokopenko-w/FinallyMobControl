@@ -57,7 +57,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _btn: {fileID: 1225342942678154617}
   _numLvl: {fileID: 5361543683890943550}
-  _view: {fileID: 4662073011325329824, guid: a7160a39448ce6849a8d6bfb6b980d4c, type: 3}
+  _view: {fileID: 57371185763141694, guid: b3a7e34c7f976d048abc2241a367dc68, type: 3}
   _parent: {fileID: 674627908012299034}
 --- !u!114 &1225342942678154617
 MonoBehaviour:

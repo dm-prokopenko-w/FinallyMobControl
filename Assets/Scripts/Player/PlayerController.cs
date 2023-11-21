@@ -51,8 +51,8 @@ namespace GameplaySystem.Player
 			_mobPrefab = data.PlayerParm.Mobs[progress.NumMod].Prefab as Mob;
 			_champPrefab = data.PlayerParm.Champs[progress.NumChamp].Prefab as Champ;
 
-			_mobPower = data.PlayerParm.Mobs[progress.NumMod].Powers[progress.NumModPower];
-			_champPower = data.PlayerParm.Mobs[progress.NumMod].Powers[progress.NumChampPower];
+			_mobPower = data.PlayerParm.Mobs[progress.NumMod].Power;
+			_champPower = data.PlayerParm.Mobs[progress.NumMod].Power;
 		}
 
 		public void Dispose()
