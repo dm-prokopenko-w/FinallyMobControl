@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2059dc44c2f8e94a8eaa0d0d24b7998, type: 3}
   m_Name: MobRed1
   m_EditorClassIdentifier: 
-  Id: MobRed1
+  Id: MobRed_1
   Prefab: {fileID: 3847044363864552857, guid: db1252997fa725c48ac1152858357bd1, type: 3}
   Power: 1
   Icon: {fileID: 21300000, guid: 4c46bc4150cdc1e44a26ae597be49bc1, type: 3}

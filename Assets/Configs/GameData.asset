@@ -15,35 +15,43 @@ MonoBehaviour:
   Id: GameData
   PlayerParm:
     Mobs:
-    - {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
-    - {fileID: 11400000, guid: a22b223b45b62a44ca04ea5b82ad9611, type: 2}
-    - {fileID: 11400000, guid: c25f10f8fcab5d844af306e6045d40c1, type: 2}
-    - {fileID: 11400000, guid: c678022d3e8df934c907e46304c89609, type: 2}
-    - {fileID: 11400000, guid: a3aab29947d102f45b9c63b452bd91bc, type: 2}
-    - {fileID: 11400000, guid: 330a76bef0d8ad8489b55ce0d42432d6, type: 2}
-    - {fileID: 11400000, guid: 53dde82d81a0025488228817858fdb6f, type: 2}
-    - {fileID: 11400000, guid: 933a0532f345b984c9496ff7af8cfbf8, type: 2}
-    - {fileID: 11400000, guid: 94d3fa85815044b41864a3710692d8c2, type: 2}
-    - {fileID: 11400000, guid: 21c4a0401f2e9af4ba08c295a4cc53fb, type: 2}
+    - Id: MobBlue_1
+      Items:
+      - {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
+      - {fileID: 11400000, guid: a22b223b45b62a44ca04ea5b82ad9611, type: 2}
+      - {fileID: 11400000, guid: c25f10f8fcab5d844af306e6045d40c1, type: 2}
+      - {fileID: 11400000, guid: c678022d3e8df934c907e46304c89609, type: 2}
+      - {fileID: 11400000, guid: a3aab29947d102f45b9c63b452bd91bc, type: 2}
+      - {fileID: 11400000, guid: 330a76bef0d8ad8489b55ce0d42432d6, type: 2}
+      - {fileID: 11400000, guid: 53dde82d81a0025488228817858fdb6f, type: 2}
+      - {fileID: 11400000, guid: 933a0532f345b984c9496ff7af8cfbf8, type: 2}
+      - {fileID: 11400000, guid: 94d3fa85815044b41864a3710692d8c2, type: 2}
+      - {fileID: 11400000, guid: 21c4a0401f2e9af4ba08c295a4cc53fb, type: 2}
     Champs:
-    - {fileID: 11400000, guid: 81a4cd913a811704a920fdb25415f681, type: 2}
-    - {fileID: 11400000, guid: 9d14204b14d78fa45a91e8b138e3401a, type: 2}
-    - {fileID: 11400000, guid: a4fd5685d0e4cc44381931304e6dd54a, type: 2}
-    - {fileID: 11400000, guid: 1538ad4f14db729449cb818436820c98, type: 2}
-    - {fileID: 11400000, guid: 2fd7b4de6aa5d2b408fc39826c1c6e6b, type: 2}
-    - {fileID: 11400000, guid: c0fdd17e24a83544c8b9e41b63d432f4, type: 2}
-    - {fileID: 11400000, guid: ea7c1517c8c38e347838fd4ad087ec73, type: 2}
-    - {fileID: 11400000, guid: bc0c324f8ba33d94092660ed9bfdfc0c, type: 2}
-    - {fileID: 11400000, guid: 16706ccecc879f04683808ec8b0233fc, type: 2}
-    - {fileID: 11400000, guid: e917953ceb32df445ba54ba01a9ebb98, type: 2}
+    - Id: ChampBlue_1
+      Items:
+      - {fileID: 11400000, guid: 81a4cd913a811704a920fdb25415f681, type: 2}
+      - {fileID: 11400000, guid: 9d14204b14d78fa45a91e8b138e3401a, type: 2}
+      - {fileID: 11400000, guid: a4fd5685d0e4cc44381931304e6dd54a, type: 2}
+      - {fileID: 11400000, guid: 1538ad4f14db729449cb818436820c98, type: 2}
+      - {fileID: 11400000, guid: 2fd7b4de6aa5d2b408fc39826c1c6e6b, type: 2}
+      - {fileID: 11400000, guid: c0fdd17e24a83544c8b9e41b63d432f4, type: 2}
+      - {fileID: 11400000, guid: ea7c1517c8c38e347838fd4ad087ec73, type: 2}
+      - {fileID: 11400000, guid: bc0c324f8ba33d94092660ed9bfdfc0c, type: 2}
+      - {fileID: 11400000, guid: 16706ccecc879f04683808ec8b0233fc, type: 2}
+      - {fileID: 11400000, guid: e917953ceb32df445ba54ba01a9ebb98, type: 2}
     Speed: 0.1
     BasePower: 1
   Lvls:
-  - EnemyBasePower: 120
+  - EnemyBasePower: 1
     LvlEnv: {fileID: 6011540859444011943, guid: ac8e130ec903106418546d9e80197cd4,
       type: 3}
     Rewards:
     - Item: {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
+      Count: 1
+    - Item: {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
+      Count: 1
+    - Item: {fileID: 11400000, guid: 81a4cd913a811704a920fdb25415f681, type: 2}
       Count: 1
     MobEnemis:
     - Item: {fileID: 11400000, guid: a9d55926d8fd3f74482c9473c8afd65e, type: 2}
