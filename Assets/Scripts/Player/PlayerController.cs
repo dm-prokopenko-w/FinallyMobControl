@@ -28,7 +28,7 @@ namespace GameplaySystem.Player
 		private int _maxStep = 100;
 
 		private float _currentTime = 0f;
-		private float _timeAwait = 0.15f;
+		private float _timeAwait = 0.2f;
 
 		private float _mobPower;
 		private float _champPower;
@@ -48,11 +48,30 @@ namespace GameplaySystem.Player
 		private void Init(GameData data)
 		{
 			var progress = _progrss.Save;
-			_mobPrefab = data.PlayerParm.Mobs[progress.NumMod].Prefab as Mob;
-			_champPrefab = data.PlayerParm.Champs[progress.NumChamp].Prefab as Champ;
 
-			_mobPower = data.PlayerParm.Mobs[progress.NumMod].Power;
-			_champPower = data.PlayerParm.Mobs[progress.NumMod].Power;
+			var mobType = data.PlayerParm.Mobs.Find(x => x.Id.Equals(progress.UseMob.Id));
+			if (mobType != null)
+			{
+				_mobPrefab = mobType.Items[progress.UseMob.Lvl].Prefab as Mob;
+				_mobPower = mobType.Items[progress.UseMob.Lvl].Power;
+			}
+			else
+			{
+				_mobPrefab = data.PlayerParm.Mobs[0].Items[0].Prefab as Mob;
+				_mobPower = data.PlayerParm.Mobs[0].Items[0].Power;
+			}
+
+			var champType = data.PlayerParm.Champs.Find(x => x.Id.Equals(progress.UseChamp.Id));
+			if (champType != null)
+			{
+				_champPrefab = champType.Items[progress.UseChamp.Lvl].Prefab as Champ;
+				_champPower = champType.Items[progress.UseChamp.Lvl].Power;
+			}
+			else
+			{
+				_champPrefab = data.PlayerParm.Mobs[0].Items[0].Prefab as Champ;
+				_champPower = data.PlayerParm.Mobs[0].Items[0].Power;
+			}
 		}
 
 		public void Dispose()

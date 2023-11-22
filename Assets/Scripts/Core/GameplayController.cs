@@ -1,5 +1,6 @@
 using Core;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using VContainer;
 using VContainer.Unity;
@@ -17,6 +18,7 @@ namespace GameplaySystem
 
 		private bool _isEndGameValue;
 		private IObjectResolver _container;
+		private List<RewardItem> _rewards = new List<RewardItem>();
 
 		public GameplayController(IObjectResolver container)
 		{
@@ -29,6 +31,7 @@ namespace GameplaySystem
 
 			var gameData = await _assetLoader.LoadConfig(Constants.GameData) as GameData;
 			await Task.Delay(100);
+			_rewards = gameData.Lvls[_progress.Save.LoadLvl - 1].Rewards;
 
 			OnInit?.Invoke(gameData);
 			OnInitWithContainer?.Invoke(gameData, _container);
@@ -38,14 +41,13 @@ namespace GameplaySystem
 
 		public async void Exit()
 		{
-			await Task.Delay(1500);
-
 			if (_isEndGameValue)
 			{
 				int curLvl = _progress.Save.LoadLvl;
-				_progress.SaveLvl(curLvl);
+				_progress.WinLvl(curLvl, _rewards);
 			}
 
+			await Task.Delay(1500);
 			SceneLoader.LoadMenuScene();
 		}
 

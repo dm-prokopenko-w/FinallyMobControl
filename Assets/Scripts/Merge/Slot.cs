@@ -1,3 +1,4 @@
+using Core;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,22 +9,25 @@ namespace Merge
 	{
 		[SerializeField] private DragDropItem _item;
 
-		public Action<Slot> OnDropItem;
+		public Action<DragDropItem> OnDropItem;
+		public int Num => _num;
+		private int _num;
 
 		public void OnDrop(PointerEventData eventData)
 		{
-			_item.gameObject.SetActive(true);
-			OnDropItem?.Invoke(this);
+			OnDropItem?.Invoke(_item);
 		}
 
-		public void Set(Action<Slot> onDropItem)
+		public void Set(Action<DragDropItem> onStartDrag, Action<DragDropItem> onDropItem, int num, bool active)
 		{
 			OnDropItem = onDropItem;
+			_item.OnStartDragItem = onStartDrag;
+			_num = num;
+			_item.gameObject.SetActive(active);
 		}
 
-		public void SetOnDrop(Sprite icon)
-		{
-			_item.SetIcon(icon);
-		}
+		public void SetValue(int lvl, Sprite icon, string id, TypeUnit type) => _item.SetValue(lvl, icon, id, type);
+
+		public DragDropItem GetDragDropItem() => _item;
 	}
 }

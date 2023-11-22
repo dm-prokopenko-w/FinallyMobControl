@@ -1,55 +1,33 @@
+using Core;
 using Merge;
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace UI
 {
-	public class ChoiceView : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler, IDropHandler
+	public class ChoiceView : MonoBehaviour,  IDropHandler
 	{
-		[SerializeField] private Image _icon;
-		[SerializeField] private TMP_Text _counter;
 		[SerializeField] private DragDropItem _item;
+		[SerializeField] private GameObject _bg;
 
-		public Action OnStartDrag;
-		public Action<Vector2> OnDragItem;
-		public Action OnEndDragItem;
-		public Action<ChoiceView> OnDropItem;
+		public Action<DragDropItem> OnDropItem;
 
-		public void Init(Action onStartDrag, Action<Vector2> onDragItem, Action onEndDragItem, Action<ChoiceView> onDropItem)
+		public void Init(Action<DragDropItem> onStartDrag, Action<DragDropItem> onDropItem)
 		{
-			OnStartDrag += onStartDrag;
-			OnDragItem += onDragItem;
-			OnEndDragItem += onEndDragItem;
+			_item.OnStartDragItem += onStartDrag;
 			OnDropItem += onDropItem;
-		}
-
-		public void OnPointerDown(PointerEventData eventData)
-		{
-			OnStartDrag?.Invoke();
-		}
-
-		public void OnDrag(PointerEventData eventData)
-		{
-			OnDragItem?.Invoke(eventData.position);
-		}
-
-		public void OnEndDrag(PointerEventData eventData)
-		{
-			OnEndDragItem?.Invoke();
 		}
 
 		public void OnDrop(PointerEventData eventData)
 		{
-			OnDropItem?.Invoke(this);
+			OnDropItem?.Invoke(_item);
 		}
 
-		public void SetValue(int count, Sprite icon)
-		{
-			_counter.text = count.ToString();
-			_icon.sprite = icon;
-		}
+		public void SetParentBg(Transform tr) => _bg.transform.SetParent(tr);
+
+		public void SetValue(int lvl, Sprite icon, string id, TypeUnit type) => _item.SetValue(lvl, icon, id, type);
+
+		public DragDropItem GetDragDropItem() => _item;
 	}
 }

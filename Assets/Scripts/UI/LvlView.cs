@@ -13,7 +13,6 @@ namespace GameplaySystem
 
 		private void Start()
 		{
-			Debug.Log(_progress.Save.LoadLvl);
 			_count.text = Constants.LvlView + _progress.Save.LoadLvl;
 		}
 	}

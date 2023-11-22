@@ -2,6 +2,8 @@ using Merge;
 using System;
 using UnityEngine;
 using Core;
+using UnityEditor;
+using System.Collections.Generic;
 
 namespace UI
 {
@@ -9,24 +11,28 @@ namespace UI
 	{
 		[SerializeField] private ChoiceView _choiceView;
 		[SerializeField] private Transform _parentChoiceView;
+		[SerializeField] private Transform _parentChoiceViewBG;
+		[SerializeField] private Transform _parentBox;
 
 		[SerializeField] private Slot _slotPrefab;
 		[SerializeField] private Transform _slotParent;
 
-		public void InitChoiceView(Action onStart, Action<Vector2> onDrag, Action onEndDrag, Action<ChoiceView> onDrop, Sprite icon)
+		public Transform ParentBox => _parentBox;
+
+		public ChoiceView InitChoiceView(Sprite icon, int lvl, string id, TypeUnit type)
 		{
 			var view = Instantiate(_choiceView, _parentChoiceView);
 			view.name = _choiceView.name;
-			view.Init(onStart, onDrag, onEndDrag, onDrop);
+			view.SetParentBg(_parentChoiceViewBG);
+			view.SetValue(lvl, icon, id, type);
+			return view;
 		}
 
-		public void InitSlots(Action<Slot> onDropItem)
+		public Slot InitSlot(Action<DragDropItem> onStart, Action<DragDropItem> onDropItem, int num, bool active)
 		{
-			for (int i = 0; i < Constants.SlotCount; i++)
-			{
-				var slot = Instantiate(_slotPrefab, _slotParent);
-				slot.Set(onDropItem);
-			}
+			var slot = Instantiate(_slotPrefab, _slotParent);
+			slot.Set(onStart, onDropItem, num, active);
+			return slot;
 		}
 	}
 }

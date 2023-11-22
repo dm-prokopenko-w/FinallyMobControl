@@ -1,4 +1,6 @@
+using Core;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,59 +11,60 @@ namespace Merge
 	{
 		[SerializeField] private RectTransform _rect;
 
-		public Action OnStartDragItem;
-		public Action<Vector2> OnDragItem;
-		public Action OnEndDragItem;
+		public Action<DragDropItem> OnStartDragItem;
 
 		[SerializeField] private Image _icon;
 		[SerializeField] private CanvasGroup _canvasGroup;
+		[SerializeField] private TMP_Text _counter;
 
-		private Vector3 _startPos;
 		private Sprite _curIcon;
+		private int _curLvl;
+		private string _id;
+		private TypeUnit _type;
 
-		private void Start()
-		{
-			_startPos = _rect.position;
-		}
-
-		public void Init(Action onStartDrag, Action<Vector2> onDragItem, Action onEndDragItem)
+		public void Init(Action<DragDropItem> onStartDrag, bool active = false)
 		{
 			OnStartDragItem += onStartDrag;
-			OnDragItem += onDragItem;
-			OnEndDragItem += onEndDragItem;
-			gameObject.SetActive(false);
+			gameObject.SetActive(active);
 		}
-
 
 		public void OnPointerDown(PointerEventData eventData)
 		{
-			OnStartDragItem?.Invoke();
+			OnStartDragItem?.Invoke(this);
 			SetBlocksRaycasts(false);
 		}
 
 		public void OnDrag(PointerEventData eventData)
 		{
-			OnDragItem?.Invoke(eventData.position);
 			SetPos(eventData.delta);
 		}
 
 		public void OnEndDrag(PointerEventData eventData)
 		{
 			SetBlocksRaycasts(true);
-			_rect.position = _startPos;
-			OnEndDragItem?.Invoke();
+			_rect.anchoredPosition = Vector2.zero;
 		}
 
 		public void SetPos(Vector2 pos) => _rect.anchoredPosition += pos;
 
-		public void SetIcon(Sprite icon)
+		public void SetValue(int lvl, Sprite icon, string id, TypeUnit type)
 		{
 			_curIcon = icon;
+			_curLvl = lvl;
+			_id = id;
+			_type = type;
+
+			_counter.text = (lvl + 1).ToString();
 			_icon.sprite = icon;
+
+			_rect.anchoredPosition = Vector2.zero;
 		}
 
 		public void SetBlocksRaycasts(bool value) => _canvasGroup.blocksRaycasts = value;
 
-		public Sprite GetSprite() => _curIcon;
+		public Sprite CurSprite => _curIcon;
+		public int CurLvl => _curLvl;
+		public string CurId => _id;
+		public TypeUnit CurTypeUnit => _type;
 	}
 }

@@ -6,6 +6,6 @@ namespace UI
 	{
 		[SerializeField] private GameObject _body;
 
-		public void ActiveBody(bool value) => _body.SetActive(value);
+		public virtual void ActiveBody(bool value) => _body.SetActive(value);
 	}
 }

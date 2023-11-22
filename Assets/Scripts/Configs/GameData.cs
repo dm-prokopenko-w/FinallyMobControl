@@ -18,8 +18,8 @@ namespace GameplaySystem
 	[Serializable]
 	public class PlayerData
 	{
-		public List<UnitConfig> Mobs;
-		public List<UnitConfig> Champs;
+		public List<UnitType> Mobs;
+		public List<UnitType> Champs;
 		public float Speed = 0.1f;
 		public int BasePower = 1;
 	}
@@ -39,6 +39,13 @@ namespace GameplaySystem
 	{
 		public UnitConfig Item;
 		public int Count;
+	}
+
+	[Serializable]
+	public class UnitType
+	{
+		public string Id;
+		public List<UnitConfig> Items;
 	}
 
 	[Serializable]

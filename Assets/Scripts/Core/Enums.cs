@@ -7,6 +7,13 @@ namespace Core
 		Enemy
 	}
 
+	public enum TypeUnit
+	{
+		All,
+		Mob,
+		Champ
+	}
+
 	public enum Views
 	{
 		None,

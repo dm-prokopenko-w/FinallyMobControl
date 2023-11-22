@@ -7,7 +7,7 @@ namespace Core
         public const string GameData = "GameData";
         public const string MenuData = "MenuData";
 
-        public const string ProgressKey = "Progress";
+        public const string ProgressKey = "ProgressGame";
 
         public const string CurrentLvl = "CurrentLvl";
 

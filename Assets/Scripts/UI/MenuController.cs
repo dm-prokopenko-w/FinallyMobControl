@@ -54,7 +54,6 @@ namespace UI
 					}
 
 					btn.Init(() => OnClick(item), viewItem.IconSprite);
-
 					OnInitMenuItem?.Invoke(item);
 				}
 			}

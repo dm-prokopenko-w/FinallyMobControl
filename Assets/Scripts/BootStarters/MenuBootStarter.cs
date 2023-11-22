@@ -13,6 +13,7 @@ namespace UI
 
             builder.Register<MenuController>(Lifetime.Scoped).As<MenuController, IStartable, IDisposable>();
 
+			builder.Register<BattleController>(Lifetime.Scoped).As<BattleController, IStartable, IDisposable>();
 			builder.Register<LvlProgressController>(Lifetime.Scoped).As<LvlProgressController, IStartable, IDisposable>();
 			builder.Register<MergeController>(Lifetime.Scoped).As<MergeController, IStartable, IDisposable>();
         }
