@@ -8,7 +8,7 @@ namespace GameplaySystem.Units
 		public override void SetTarget(string tag, Vector3 pos, Action<Collider, Collider> onTrigger, float power)
 		{
 			base.SetTarget(tag, pos, onTrigger, power);
-			Move(pos);
+			Move();
 		}
 	}
 }

@@ -1,27 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameplaySystem.Units;
+using VContainer;
 
 namespace Core
 {
     public class UnitObjectPool
 	{
+		[Inject] private ControllerVFX _effect;
+
 		private Dictionary<string, Pool> _pools = new Dictionary<string, Pool>();
-
-        public void Preload(Unit prefab, Transform container, int count)
-        {
-            InitPool(prefab, container);
-			Unit[] objs = new Unit[count];
-            for (int i = 0; i < count; i++)
-            {
-                objs[i] = Spawn(prefab, Vector3.zero, Quaternion.identity, container);
-            }
-
-            for (int i = 0; i < count; i++)
-            {
-                Despawn(objs[i]);
-            }
-        }
 
         private void InitPool(Unit prefab, Transform container)
         {
@@ -34,12 +22,13 @@ namespace Core
         public Unit Spawn(Unit prefab, Vector3 pos, Quaternion rot, Transform container)
         {
             InitPool(prefab, container);
-            return _pools[prefab.gameObject.name].Spawn(pos, rot, container);
+            _effect.SpawnUnit(pos);
+			return _pools[prefab.gameObject.name].Spawn(pos, rot, container);
         }
 
         public void Despawn(Unit obj)
         {
-            if (_pools.ContainsKey(obj.name))
+			if (_pools.ContainsKey(obj.name))
             {
                 _pools[obj.name].Despawn(obj);
             }

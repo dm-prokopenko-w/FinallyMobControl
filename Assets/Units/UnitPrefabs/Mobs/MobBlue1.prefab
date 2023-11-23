@@ -32,6 +32,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8246298471252113358, guid: 4b22596c43e2cdc49a62cd3739fe1368,
+        type: 3}
+      propertyPath: _anim
+      value: 
+      objectReference: {fileID: 1071295754248546713}
     - target: {fileID: 8246298471252113359, guid: 4b22596c43e2cdc49a62cd3739fe1368,
         type: 3}
       propertyPath: m_RootOrder

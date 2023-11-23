@@ -119,5 +119,10 @@ MonoBehaviour:
       TimeAwait: 20
     - Item: {fileID: 11400000, guid: 00e3c23ee1df2964fbfc5851bd59e9f7, type: 2}
       TimeAwait: 10
+  VFXs:
+  - Id: UnitSpawner
+    Item: {fileID: 100000, guid: dfa5c28b8cdd8f54d81845feed5ef206, type: 3}
+  - Id: UnitDead
+    Item: {fileID: 100004, guid: 694bfe41cd24dfa4d9e630ea69bc2382, type: 3}
   DropPrefab: {fileID: 8286696265415824311, guid: f33a4b5ba855a0444bcd320f35539272,
     type: 3}

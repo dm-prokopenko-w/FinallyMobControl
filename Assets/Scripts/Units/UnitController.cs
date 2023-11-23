@@ -11,6 +11,7 @@ namespace GameplaySystem.Units
 	public class UnitController : IStartable, IDisposable
 	{
 		[Inject] private GameplayController _gameplay;
+		[Inject] private ControllerVFX _effect;
 
 		[Inject] private UnitObjectPool _pool;
 		[Inject] private ProgressController _progrss;
@@ -71,11 +72,23 @@ namespace GameplaySystem.Units
 			{
 				if (thisUnit.tag == Constants.PlayerTag && enterUnit.tag == Constants.EnemyTag)
 				{
-					SetDamage(thisUnit, enterUnit.Dam, () => DestroyUnit(thisUnit));
+					var onDestroy = new Action(() =>
+					{
+						_effect.DeadUnit(thisCol.transform.position);
+						DestroyUnit(thisUnit);
+					});
+
+					Atack(thisUnit, enterUnit.Dam, onDestroy);
 				}
 				else if (thisUnit.tag == Constants.EnemyTag && enterUnit.tag == Constants.PlayerTag)
 				{
-					SetDamage(thisUnit, enterUnit.Dam, () => DestroyUnit(thisUnit));
+					var onDestroy = new Action(() =>
+					{
+						_effect.DeadUnit(thisCol.transform.position);
+						DestroyUnit(thisUnit);
+					});
+
+					Atack(thisUnit, enterUnit.Dam, onDestroy);
 				}
 				return;
 			}
@@ -88,11 +101,12 @@ namespace GameplaySystem.Units
 				});
 				var onDestroy = new Action(() =>
 				{
-					SetDamage(thisUnit, _playerBase.Dam, () => DestroyUnit(thisUnit));
+					_effect.DeadUnit(thisCol.transform.position);
+					Atack(thisUnit, _playerBase.Dam, () => DestroyUnit(thisUnit));
 				});
 
-				SetDamage(_playerBase, thisUnit.Dam, onLose);
-				SetDamage(thisUnit, _playerBase.Dam, onDestroy);
+				Atack(_playerBase, thisUnit.Dam, onLose);
+				Atack(thisUnit, _playerBase.Dam, onDestroy);
 				return;
 			}
 
@@ -105,24 +119,22 @@ namespace GameplaySystem.Units
 				});
 				var onDestroy = new Action(() =>
 				{
-					SetDamage(thisUnit, enterBase.Dam, () => DestroyUnit(thisUnit));
+					_effect.DeadUnit(thisCol.transform.position);
+					Atack(thisUnit, enterBase.Dam, () => DestroyUnit(thisUnit));
 				});
 
-				SetDamage(enterBase, thisUnit.Dam, onWin);
-				SetDamage(thisUnit, enterBase.Dam, onDestroy);
+				Atack(enterBase, thisUnit.Dam, onWin);
+				Atack(thisUnit, enterBase.Dam, onDestroy);
 			}
 		}
 
-		private void SetDamage(Unit unit, float dam, Action onDestroy) =>
-			unit.SetDamage(dam, onDestroy);
+		private void Atack(Unit unit, float dam, Action onDestroy) =>
+			unit.Atack(dam, onDestroy);
 
-		private void SetDamage(Base b, float dam, Action onDestroy) =>
-			b.SetDamage(dam, onDestroy);
+		private void Atack(Base b, float dam, Action onDestroy) =>
+			b.Atack(dam, onDestroy);
 
-		private void DestroyUnit(Unit unit)
-		{
-			_pool.Despawn(unit);
-		}
+		private void DestroyUnit(Unit unit) => _pool.Despawn(unit);
 
 		public void Spawn(Unit unit, Vector3 pos, Quaternion rot, Vector3 target, float power)
 		{

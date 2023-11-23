@@ -25,6 +25,10 @@ MonoBehaviour:
     m_Address: Configs/MenuData
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 7d28cfbb8dbd3214b95c22870bfdeef6
+    m_Address: Configs/VFXData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 77ed3d30432098d4cbbb250c986ef6a2, type: 2}
   m_SchemaSet:

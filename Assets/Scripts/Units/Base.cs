@@ -26,7 +26,7 @@ namespace GameplaySystem.Units
 			_onTrigger = power.Item2;
 		}
 
-		public void SetDamage(float dam, Action OnDestroy)
+		public void Atack(float dam, Action OnDestroy)
 		{
 			HP -= dam;
 			if (HP <= 0) OnDestroy?.Invoke();

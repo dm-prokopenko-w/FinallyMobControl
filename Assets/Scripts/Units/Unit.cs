@@ -1,4 +1,6 @@
+using Core;
 using System;
+using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -7,30 +9,57 @@ namespace GameplaySystem.Units
 	public class Unit : MonoBehaviour
 	{
 		[SerializeField] private UnitBody _body;
+		[SerializeField] private Animator _anim;
 
 		public Collider Col => _body.Col;
 		public float HP { get; protected set; }
 		public float Dam { get; protected set; }
+
+		private Vector3 _target;
 
 		public virtual void SetTarget(string tag, Vector3 pos, Action<Collider, Collider> onTrigger, float power)
 		{
 			this.gameObject.tag = tag;
 			HP = power;
 			Dam = power;
+
 			_body.OnTrigger = onTrigger;
+			_target = pos;
 		}
 
-		public void SetDamage(float dam, Action OnDestroy)
+		private IEnumerator Atack(Action OnDestroy)
+		{
+			_body.Agent.ResetPath();
+			_anim.SetTrigger(Constants.AtackAnim);
+			if (HP <= 0)
+			{
+				Col.enabled = false;
+			}
+			yield return new WaitForSeconds(2.5f);
+			if (HP <= 0)
+			{
+				OnDestroy?.Invoke();
+			}
+			else
+			{
+				Move();
+			}
+		}
+
+		public void Atack(float dam, Action OnDestroy)
 		{
 			HP -= dam;
-			if (HP <= 0) OnDestroy?.Invoke();
+			StartCoroutine(Atack(OnDestroy));
 		}
 
-		public async void Move(Vector3 targetPos)
+		public async void Move()
 		{
-			await Task.Delay(10);
+			Col.enabled = true;
+
+			await Task.Delay(100);
 			if (!_body.Agent.isActiveAndEnabled) return;
-			_body.Agent.SetDestination(targetPos);
+			_body.Agent.SetDestination(_target);
+			_anim.SetTrigger(Constants.MoveAnim);
 		}
 
 		public void StopUnit()

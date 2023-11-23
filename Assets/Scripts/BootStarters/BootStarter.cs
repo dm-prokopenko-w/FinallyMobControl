@@ -1,4 +1,5 @@
 using Core;
+using System;
 using VContainer;
 using VContainer.Unity;
 
@@ -10,5 +11,6 @@ public class BootStarter : LifetimeScope
 		builder.Register<AssetLoader>(Lifetime.Scoped);
 		builder.Register<SaveModule>(Lifetime.Scoped);
         builder.Register<ProgressController>(Lifetime.Scoped).As<ProgressController, IStartable>();
+        builder.Register<ControllerVFX>(Lifetime.Scoped).As<ControllerVFX, IStartable, IDisposable>();
 	}
 }
