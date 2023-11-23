@@ -24,12 +24,12 @@ namespace UI
 			_btn.onClick.AddListener(Click);
 		}
 
-		public void Init(int num, List<RewardItem> rewards, Action<int> onLoadLvl)
+		public void Init(int num, List<RewardItem> rewards, Action<int> onLoadLvl, bool activeBtn)
 		{
 			_numLvl.text = num.ToString();
 			_currentLvl = num;
 			_onLoadLvl = onLoadLvl;
-
+			_btn.interactable = activeBtn;
 			foreach (var reward in rewards)
 			{
 				var view = Instantiate(_view, _parent);

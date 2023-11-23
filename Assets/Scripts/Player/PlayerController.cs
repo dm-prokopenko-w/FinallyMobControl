@@ -113,8 +113,8 @@ namespace GameplaySystem.Player
 
 			if (_curStep >= _maxStep)
 			{
-				Step();
 				_curStep = 0;
+				Step();
 				Spawn(_champPrefab, StartPoint.transform.position, _champPower);
 			}
 		}

@@ -7,27 +7,17 @@ using VContainer.Unity;
 
 namespace UI
 {
-	public class Preloader : MonoBehaviour, IStartable
+	public class Preloader : MonoBehaviour
 	{
-		[Inject] private MenuController _menuContr;
-
 		[SerializeField] private GameObject _body;
 		[SerializeField] private Image _loading;
 
 		private float _curTime;
-		private float _timeAwait = 3f;
+		private float _timeAwait = 1f;
 
-		public void Start()
+		private void Start()
 		{
 			_body.SetActive(true);
-			_menuContr.OnInit += Hide;
-		}
-
-		private async void Hide(GameData gameData)
-		{
-			int time = (int)(_timeAwait * 1000f);
-			await Task.Delay(time);
-			_body.SetActive(false);
 		}
 
 		private void Update()
@@ -37,6 +27,8 @@ namespace UI
 
 			if (_curTime > _timeAwait)
 			{
+				_body.SetActive(false);
+
 				_curTime = 0f;
 			}
 		}

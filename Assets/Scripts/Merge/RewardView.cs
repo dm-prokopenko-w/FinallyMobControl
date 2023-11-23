@@ -12,7 +12,7 @@ namespace UI
 		public void Init(Sprite icon, int count)
 		{
 			_icon.sprite = icon;
-			_counter.text = count.ToString();
+			_counter.text = (count + 1).ToString();
 		}
 	}
 }

@@ -57,7 +57,7 @@ namespace GameplaySystem.Units
 			Col.enabled = true;
 
 			await Task.Delay(100);
-			if (!_body.Agent.isActiveAndEnabled) return;
+			if (_body == null && !_body.Agent.isActiveAndEnabled) return;
 			_body.Agent.SetDestination(_target);
 			_anim.SetTrigger(Constants.MoveAnim);
 		}

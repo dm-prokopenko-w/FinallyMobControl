@@ -7,11 +7,12 @@ using UnityEngine.UI;
 
 namespace Merge
 {
-	public class DragDropItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler 
+	public class DragDropItem : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
 	{
 		[SerializeField] private RectTransform _rect;
 
 		public Action<DragDropItem> OnStartDragItem;
+		public Action OnDisable;
 
 		[SerializeField] private Image _icon;
 		[SerializeField] private CanvasGroup _canvasGroup;
@@ -61,6 +62,12 @@ namespace Merge
 		}
 
 		public void SetBlocksRaycasts(bool value) => _canvasGroup.blocksRaycasts = value;
+
+		public void DisableItem()
+		{
+			OnDisable?.Invoke();
+			gameObject.SetActive(false);
+		}
 
 		public Sprite CurSprite => _curIcon;
 		public int CurLvl => _curLvl;

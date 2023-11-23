@@ -13,5 +13,10 @@ namespace Core
         {
             SceneManager.LoadScene(Constants.GameScene);
         }
+
+        public static void ResetScene()
+        {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name); ;
+        }
     }
 }

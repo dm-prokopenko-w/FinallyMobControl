@@ -23,6 +23,7 @@ namespace UI
 		public void Dispose()
 		{
 			_menuContr.OnInitMenuItem -= Init;
+			_lvlProgress.OnEnableView -= UpdateBattle;
 		}
 
 		private void Init(ItemMenu item)
@@ -30,11 +31,38 @@ namespace UI
 			if (item.Type != Views.LvlProgress) return;
 
 			_lvlProgress = item.View as LvlProgressView;
+			_lvlProgress.OnEnableView += UpdateBattle;
 		}
 
 		private void InitData(GameData data)
 		{
-			_lvlProgress.Init(data.Lvls, SaveProgress);
+			_lvlProgress.Init(data.Lvls, SaveProgress, _progress.Save.LoadLvl);
+		}
+
+		private void UpdateBattle()
+		{
+			if (_progress.Save.UseMob == null)
+			{
+				_lvlProgress.UpdateView(false);
+				return;
+			}
+			if (_progress.Save.UseChamp == null)
+			{
+				_lvlProgress.UpdateView(false);
+				return;
+			}
+			if (string.IsNullOrEmpty(_progress.Save.UseMob.Id))
+			{
+				_lvlProgress.UpdateView(false);
+				return;
+			}
+			if (string.IsNullOrEmpty(_progress.Save.UseChamp.Id))
+			{
+				_lvlProgress.UpdateView(false);
+				return;
+			}
+
+			_lvlProgress.UpdateView(true);
 		}
 
 		private async void SaveProgress(int numLvl)

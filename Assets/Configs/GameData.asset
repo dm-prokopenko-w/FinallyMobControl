@@ -65,7 +65,7 @@ MonoBehaviour:
     Rewards:
     - Item: {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
       Count: 1
-    - Item: {fileID: 11400000, guid: 8d4a3a2513165054a8dbda9f73fe47b9, type: 2}
+    - Item: {fileID: 11400000, guid: 9d14204b14d78fa45a91e8b138e3401a, type: 2}
       Count: 1
     MobEnemis:
     - Item: {fileID: 11400000, guid: 5424a432cf736ff408fe5d1d89fa3b73, type: 2}

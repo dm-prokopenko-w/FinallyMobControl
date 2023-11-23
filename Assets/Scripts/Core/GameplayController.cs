@@ -19,6 +19,7 @@ namespace GameplaySystem
 		private bool _isEndGameValue;
 		private IObjectResolver _container;
 		private List<RewardItem> _rewards = new List<RewardItem>();
+		private int _maxLvl;
 
 		public GameplayController(IObjectResolver container)
 		{
@@ -30,6 +31,7 @@ namespace GameplaySystem
 			OnEndGame += EndGame;
 
 			var gameData = await _assetLoader.LoadConfig(Constants.GameData) as GameData;
+			_maxLvl = gameData.Lvls.Count;
 			await Task.Delay(100);
 			_rewards = gameData.Lvls[_progress.Save.LoadLvl - 1].Rewards;
 
@@ -44,6 +46,12 @@ namespace GameplaySystem
 			if (_isEndGameValue)
 			{
 				int curLvl = _progress.Save.LoadLvl;
+
+				if (curLvl < _maxLvl)
+				{
+					curLvl++;
+				}
+
 				_progress.WinLvl(curLvl, _rewards);
 			}
 

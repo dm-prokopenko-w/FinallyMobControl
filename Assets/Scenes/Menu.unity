@@ -727,6 +727,7 @@ MonoBehaviour:
   autoInjectGameObjects:
   - {fileID: 568936658}
   - {fileID: 934224512}
+  - {fileID: 0}
 --- !u!1 &1243670109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,11 +1058,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Preloader
       objectReference: {fileID: 0}
-    - target: {fileID: 8945468265808323070, guid: a32ec17bfd0ab6d47962e01cd37b40a9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8945468265808323071, guid: a32ec17bfd0ab6d47962e01cd37b40a9,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1075,7 +1071,7 @@ PrefabInstance:
     - target: {fileID: 8945468265808323071, guid: a32ec17bfd0ab6d47962e01cd37b40a9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8945468265808323071, guid: a32ec17bfd0ab6d47962e01cd37b40a9,
         type: 3}

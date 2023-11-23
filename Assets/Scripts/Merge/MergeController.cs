@@ -3,11 +3,9 @@ using GameplaySystem;
 using System;
 using System.Collections.Generic;
 using UI;
-using UnityEditor;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
-using static UnityEditor.Progress;
 
 namespace Merge
 {
@@ -20,7 +18,7 @@ namespace Merge
 		private MergeView _merge;
 
 		private List<Slot> _slots = new List<Slot>();
-		private List<DragDropItem> _inBox = new List<DragDropItem>();
+		private List<InBoxView> _inBox = new List<InBoxView>();
 		private ChoiceView _mobView;
 		private ChoiceView _champView;
 
@@ -64,8 +62,7 @@ namespace Merge
 
 			foreach (var save in _progrss.Save.InBox)
 			{
-				var obj = UnityEngine.Object.Instantiate(data.DropPrefab, _merge.ParentBox);
-				obj.Init(StartDrag, true);
+				var obj = _merge.InitInBox(StartDrag);
 				obj.SetValue(
 					save.Lvl,
 					GetIcon(data, save.Lvl, save.Id),
@@ -140,7 +137,7 @@ namespace Merge
 
 		private void DisableDragDropItem()
 		{
-			_dropItem.gameObject.SetActive(false);
+			_dropItem.DisableItem();
 
 			if (_mobView.GetDragDropItem() == _dropItem)
 			{
@@ -157,7 +154,7 @@ namespace Merge
 				_progrss.SaveInSlot(null, unitSlot.Num);
 			}
 
-			var unit = _inBox.Find(x => x == _dropItem);
+			var unit = _inBox.Find(x => x.GetDragDropItem() == _dropItem);
 			if (unit != null)
 			{
 				_progrss.RemoveInBox(_dropItem);

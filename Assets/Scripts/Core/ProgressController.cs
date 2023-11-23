@@ -62,13 +62,11 @@ namespace Core
 			{
 				if (type == TypeUnit.Mob)
 				{
-					_save.UseMob.Id = item.CurId;
-					_save.UseMob.Lvl = item.CurLvl;
+					_save.UseMob = new ProgressItem(item.CurId, item.CurLvl);
 				}
 				else if (type == TypeUnit.Champ)
 				{
-					_save.UseChamp.Id = item.CurId;
-					_save.UseChamp.Lvl = item.CurLvl;
+					_save.UseChamp = new ProgressItem(item.CurId, item.CurLvl);
 				}
 			}
 

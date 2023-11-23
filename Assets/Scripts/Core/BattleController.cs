@@ -1,7 +1,6 @@
 using Core;
 using GameplaySystem;
 using System;
-using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -50,14 +49,14 @@ namespace UI
 		{
 			_menuContr.OnInit -= InitData;
 			_menuContr.OnInitMenuItem -= Init;
-			_battle.OnEnableBattleView -= UpdateBattle;
+			_battle.OnEnableView -= UpdateBattle;
 		}
 
 		private void Init(ItemMenu item)
 		{
 			if (item.Type != Views.Battle) return;
 			_battle = item.View as BattleView;
-			_battle.OnEnableBattleView += UpdateBattle;
+			_battle.OnEnableView += UpdateBattle;
 			UpdateBattle();
 		}
 
@@ -69,6 +68,7 @@ namespace UI
 		private void ResetGame()
 		{
 			_progress.ResetGame();
+			SceneLoader.ResetScene();
 		}
 	}
 }

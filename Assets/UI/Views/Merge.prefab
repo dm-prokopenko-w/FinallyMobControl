@@ -556,6 +556,8 @@ MonoBehaviour:
     type: 3}
   _parentChoiceView: {fileID: 6558867234863637466}
   _parentChoiceViewBG: {fileID: 7566707937725886876}
+  _inBoxPrefab: {fileID: 8918776339596637931, guid: 14e5076f14f77a444b552278ce607584,
+    type: 3}
   _parentBox: {fileID: 4077307448127076899}
   _slotPrefab: {fileID: 7698844552981649341, guid: 506eaa5fb0ac25541a756cd0e4a475aa,
     type: 3}

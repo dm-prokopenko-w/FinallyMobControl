@@ -7,6 +7,7 @@ namespace Core
 		public const string GameData = "GameData";
 		public const string MenuData = "MenuData";
 		public const string VFXData = "VFXData";
+		public const string AudioData = "AudioData";
 
 		public const string ProgressKey = "ProgressGame";
 
@@ -28,5 +29,8 @@ namespace Core
 		public const string IdleAnim = "Idle";
 		public const string MoveAnim = "Move";
 		public const string AtackAnim = "Atack";
+
+		public const string MusicKey = "MusicKey";
+		public const string SoundKey = "SoundKey";
 	}
 }
