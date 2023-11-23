@@ -60,7 +60,7 @@ MonoBehaviour:
     - Item: {fileID: 11400000, guid: 8d4a3a2513165054a8dbda9f73fe47b9, type: 2}
       TimeAwait: 15
   - EnemyBasePower: 250
-    LvlEnv: {fileID: 6011540859444011943, guid: 5ad7954bd9be4374a87ffcb07dd5df64,
+    LvlEnv: {fileID: 6011540859444011943, guid: 2a10b376207470c42bac2ad9eeabf5b1,
       type: 3}
     Rewards:
     - Item: {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
@@ -74,7 +74,7 @@ MonoBehaviour:
     - Item: {fileID: 11400000, guid: 8102d6a744645ed4a82323cbcd29e820, type: 2}
       TimeAwait: 10
   - EnemyBasePower: 350
-    LvlEnv: {fileID: 6011540859444011943, guid: 6c83df42386d14f408acba9457dbf407,
+    LvlEnv: {fileID: 6011540859444011943, guid: 5cbaf9327dc2ecf40aa97f196976665c,
       type: 3}
     Rewards:
     - Item: {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
@@ -88,7 +88,7 @@ MonoBehaviour:
     - Item: {fileID: 11400000, guid: a22831a916e74c04a9a8ec5dec823058, type: 2}
       TimeAwait: 5
   - EnemyBasePower: 450
-    LvlEnv: {fileID: 6011540859444011943, guid: 1b5b224d081bc7146867dd1fec37ec95,
+    LvlEnv: {fileID: 6011540859444011943, guid: 47886521e284a3142bd0a366aa43859b,
       type: 3}
     Rewards:
     - Item: {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
@@ -102,7 +102,7 @@ MonoBehaviour:
     - Item: {fileID: 11400000, guid: 864b86013f0c2344880849dd538dce07, type: 2}
       TimeAwait: 15
   - EnemyBasePower: 600
-    LvlEnv: {fileID: 6011540859444011943, guid: ac060447b7a859f4eab9ba3011d05118,
+    LvlEnv: {fileID: 6011540859444011943, guid: 4ff4292766132c542a320709fb369a21,
       type: 3}
     Rewards:
     - Item: {fileID: 11400000, guid: 3b7818baf9b490a4f84725774f5bb2db, type: 2}
@@ -119,10 +119,5 @@ MonoBehaviour:
       TimeAwait: 20
     - Item: {fileID: 11400000, guid: 00e3c23ee1df2964fbfc5851bd59e9f7, type: 2}
       TimeAwait: 10
-  VFXs:
-  - Id: UnitSpawner
-    Item: {fileID: 100000, guid: dfa5c28b8cdd8f54d81845feed5ef206, type: 3}
-  - Id: UnitDead
-    Item: {fileID: 100004, guid: 694bfe41cd24dfa4d9e630ea69bc2382, type: 3}
   DropPrefab: {fileID: 8286696265415824311, guid: f33a4b5ba855a0444bcd320f35539272,
     type: 3}

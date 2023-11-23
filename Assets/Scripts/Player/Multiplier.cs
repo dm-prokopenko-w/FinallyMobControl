@@ -8,6 +8,12 @@ using VContainer;
 
 public class Multiplier : MonoBehaviour
 {
+	private enum Dir
+	{
+		Left,
+		Right
+	}
+
 	[Inject] private UnitController _unitContr;
 	[Inject] private PlayerController _playerContr;
 	[Inject] private EnemyController _enemyContr;
@@ -19,6 +25,7 @@ public class Multiplier : MonoBehaviour
 	[SerializeField] private float _minX = -1.7f;
 	[SerializeField] private float _maxX = 1.7f;
 	[SerializeField] private float _speed = 1f;
+	[SerializeField] private Dir _startDir;
 
 	private Vector3 _minPosX;
 	private Vector3 _maxPosX;
@@ -30,7 +37,14 @@ public class Multiplier : MonoBehaviour
 
 		_minPosX = new Vector3(_minX, 0, 0);
 		_maxPosX = new Vector3(_maxX, 0, 0);
-		_target = _minPosX;
+		if (_startDir == Dir.Left)
+		{
+			_target = _minPosX;
+		}
+		else
+		{
+			_target = _maxPosX;
+		}
 	}
 
 	private void OnTriggerEnter(Collider col)
